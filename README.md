@@ -24,7 +24,19 @@ If you keep it running in a server it will automatically alert you by email when
 
 ![Screen Shot 2021-08-08 at 19 29 17](https://user-images.githubusercontent.com/28694518/128783540-6576d54e-3552-4cbf-85d9-de5ec02e13c6.jpg)
 
-  
+
+# Posts that Inspired me to do it. I tried to apply both of these strategies at the same time.
+
+https://www.reddit.com/r/CryptoCurrency/comments/ofu03b/which_is_better_buying_top_coins_vs_buying_btc/
+The sweet spot seemed to be around 6 or 7 coins (ordered by market cap).
+
+https://www.reddit.com/r/CryptoCurrency/comments/8ng8n0/automatically_rebalancing_your_portfolio_beats/
+The second post was about rebalancing the portfolio. The higher the rebalance frequency the higher the returns. Of course there are limits to it, since fees play a role (taxes too in some cases).
+
+https://www.breakingthemarket.com/
+This blog is an absolutely masterpiece. Best content I've ever found on the web. It goes into deep details how to maximize the geometric return of a portfolio; but it focus on rebalancing the portfolio as frequently as possible.
+
+
     
       
 #
