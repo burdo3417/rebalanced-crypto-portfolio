@@ -2,7 +2,7 @@
 
 This is a script to invest in the Top "x" number of cryptos by market cap, and keep the portfolio balanced by a determined threshold.
 
-For explanation visit:  
+For more info visit:  
 https://www.reddit.com/r/CryptoCurrency/comments/ozlvfy/python_script_to_rebalance_portfolio_and_invest/
 
 What it basically does is given a certain amount of capital, how many coins you want to invest in, the percentage of each coin you want to allocate in the portfolio and the threshold you decide to use for rebalancing; it constructs the portfolio.  
