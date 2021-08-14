@@ -195,6 +195,7 @@ def check_coin_list():
 		
 		df_invested = df_invested.iloc[:-1] #drop last row/coin
 		
+		#Add new coin row to dataframe
 		new_row = []
 		new_row = df.values[-1].tolist()
 		new_row_series=pd.Series(new_row, index = df.columns)
@@ -203,6 +204,7 @@ def check_coin_list():
 			df_invested = df_invested.loc[:, ~df_invested.columns.str.contains('^Unnamed')]
 		except:
 			pass
+		#Update USD Allocation and Coin allocation using the USD we get from selling the old coin	
 		df_invested.iloc[-1,4] = usd_dropped_coin
 		df_invested.iloc[-1,3] = usd_dropped_coin / df_invested.iloc[-1,2]
 		
