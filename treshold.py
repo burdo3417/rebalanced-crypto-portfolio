@@ -171,9 +171,12 @@ def check_coin_list():
 	global treshold_reached
 	list_coins = []
 	list_invested_coins = []
+	sell_coin = df_invested["Symbol"].iloc[-1]
+	buy_coin = df["Symbol"].iloc[-1]
+	
 	subject= "Portfolio Rebalance Alert"
 	msg = EmailMessage()
-	msg.set_content(f"""There is a new coin in the top {number_of_coins} """) #email body
+	msg.set_content(f"""There is a new coin in the top {number_of_coins}. SELL {sell_coin}. BUY {buy_coin} \n \n Replace the old coin with the new coin and coin allocation in the excel spreadsheet and Re run the script""") #email body
 	msg["Subject"] = subject
 	msg["From"] = 'Portfolio Rebalance Alert <{sender_email}>'
 	msg["To"] = receiver_email
