@@ -167,22 +167,13 @@ print("\n")
 
 
 #CHECKS IF THE TOP X COINS REMAINS THE SAME AS THE INVESTED PORTFOLIO. SENDS EMAIL IF NOT.
-usd_dropped_coin = df_invested.iloc[-1,4] #USD invested in last coin. (Used to calculate USD allocation when there is a change in the top x coins)
 def check_coin_list():
-	global df
-	global df_invested
 	global treshold_reached
-	global number_of_coins
-	global usd_dropped_coin
 	list_coins = []
 	list_invested_coins = []
-	sell_coin = df_invested["Symbol"].iloc[-1]
-	buy_coin = df["Symbol"].iloc[-1]
-
-
 	subject= "Portfolio Rebalance Alert"
 	msg = EmailMessage()
-	msg.set_content(f"""There is a new coin in the top {number_of_coins}. SELL {sell_coin}. BUY {buy_coin}""") #email body
+	msg.set_content(f"""There is a new coin in the top {number_of_coins} """) #email body
 	msg["Subject"] = subject
 	msg["From"] = 'Portfolio Rebalance Alert <{sender_email}>'
 	msg["To"] = receiver_email
@@ -192,37 +183,6 @@ def check_coin_list():
 	if list_coins == list_invested_coins:
 		pass
 	else:
-		
-		df_invested = df_invested.iloc[:-1] #drop last row/coin
-		
-		#Add new coin row to dataframe
-		new_row = []
-		new_row = df.values[-1].tolist()
-		new_row_series=pd.Series(new_row, index = df.columns)
-		df_invested = df_invested.append(new_row_series, ignore_index=True)
-		try:
-			df_invested = df_invested.loc[:, ~df_invested.columns.str.contains('^Unnamed')]
-		except:
-			pass
-		#Update USD Allocation and Coin allocation using the USD we get from selling the old coin	
-		df_invested.iloc[-1,4] = usd_dropped_coin
-		df_invested.iloc[-1,3] = usd_dropped_coin / df_invested.iloc[-1,2]
-		
-
-
-		#SAVES DATAFRAME TO EXCEL FILE
-		try:
-			os.remove("treshold.xlsx")
-		except:
-			pass
-		try:	
-			df_invested = df_invested.drop(columns="index")
-		except:
-			pass
-		writer = pd.ExcelWriter('treshold.xlsx')
-		df_invested.to_excel(writer)
-		writer.save()
-
 		if server == True:
 			context = ssl.create_default_context()
 			with smtplib.SMTP(host="smtp.gmail.com", port=587) as smtp:
@@ -230,12 +190,14 @@ def check_coin_list():
 		    		smtp.login(sender_email, password)
 		    		smtp.send_message(msg)
 			treshold_reached = True
-			
-			print("********** There is a new coin in the top " + str(number_of_coins) + ". SELL " + str(sell_coin) + ". BUY " + str(buy_coin) + " *********** ")
-			sys.exit("******** MODIFY EXCEL WITH NEW ALLOCATION AND RE RUN THE SCRIPT ********** ")
+
+			print("********************* THERE IS A NEW COIN IN THE TOP " + str(number_of_coins)+ " **********************")
+			print("******* MODIFY EXCEL SPREADSHEET WITH NEW COIN AND NUMBER OF COINS **********")
+			sys.exit("\n")
 		else:
-			print("********** There is a new coin in the top " + str(number_of_coins) + ". SELL " + str(sell_coin) + ". BUY " + str(buy_coin) + " *********** ")
-			sys.exit("******** MODIFY EXCEL WITH NEW ALLOCATION AND RE RUN THE SCRIPT ********** ")
+			print("********************* THERE IS A NEW COIN IN THE TOP " + str(number_of_coins)+ " **********************")
+			print("******* MODIFY EXCEL SPREADSHEET WITH NEW COIN AND NUMBER OF COINS **********")
+			sys.exit("\n")
 
 check_coin_list()
 
@@ -377,6 +339,11 @@ def rebalance():
 if treshold_reached:
 	rebalance()
 	
+
+
+
+
+
 
 
 
