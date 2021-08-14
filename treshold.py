@@ -174,9 +174,9 @@ def check_coin_list():
 	sell_coin = df_invested["Symbol"].iloc[-1]
 	buy_coin = df["Symbol"].iloc[-1]
 	
-	subject= "Portfolio Rebalance Alert"
+	subject= "New Coin in Portfolio"
 	msg = EmailMessage()
-	msg.set_content(f"""There is a new coin in the top {number_of_coins}. SELL {sell_coin}. BUY {buy_coin} \n \n Replace the old coin with the new coin and coin allocation in the excel spreadsheet and Re run the script""") #email body
+	msg.set_content(f"""There is a new coin in the top {number_of_coins}. \n \n SELL {sell_coin} \n BUY {buy_coin}  \n \n Modify Excel Spreadsheet with {buy_coin}. \n Remember to change all columns including the correct index matching ranking of Coin Market Cap""") #email body
 	msg["Subject"] = subject
 	msg["From"] = 'Portfolio Rebalance Alert <{sender_email}>'
 	msg["To"] = receiver_email
