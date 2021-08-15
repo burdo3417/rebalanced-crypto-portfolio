@@ -183,7 +183,7 @@ def check_coin_list():
 	for coin,new_coin in zip(df["Symbol"],df_invested["Symbol"]):
 		list_coins.append(coin)
 		list_invested_coins.append(new_coin)
-	if list_coins == list_invested_coins:
+	if set(list_coins) == set(list_invested_coins):
 		pass
 	else:
 		if server == True:
