@@ -176,7 +176,7 @@ def check_coin_list():
 	
 	subject= "New Coin in Portfolio"
 	msg = EmailMessage()
-	msg.set_content(f"""There is a new coin in the top {number_of_coins}. \n \n SELL {sell_coin} \n BUY {buy_coin}  \n \n Modify Excel Spreadsheet with {buy_coin}. \n Remember to change all columns including the correct index matching ranking of Coin Market Cap""") #email body
+	msg.set_content(f"""There is a new coin in the top {number_of_coins}. \n \n SELL {sell_coin} \n BUY {buy_coin}  \n \n Modify Excel Spreadsheet with {buy_coin}. \n Remember to change columns INDEX (matching ranking of Coin Market Cap), SYMBOL and COIN ALLOCATION""") #email body
 	msg["Subject"] = subject
 	msg["From"] = 'Portfolio Rebalance Alert <{sender_email}>'
 	msg["To"] = receiver_email
@@ -195,15 +195,15 @@ def check_coin_list():
 			treshold_reached = True
 
 			print("********************* THERE IS A NEW COIN IN THE TOP " + str(number_of_coins)+ " **********************")
-			print("*************************** BUY " + buy_coin + " ***************************")
-			print("*************************** SELL " + sell_coin + " ***************************")
-			print("******* MODIFY EXCEL SPREADSHEET WITH NEW COIN AND NUMBER OF COINS **********")
+			print("********************************** BUY " + buy_coin + " **********************************")
+			print("********************************** SELL " + sell_coin + " **********************************")
+			print("***** MODIFY EXCEL SPREADSHEET WITH INDEX, SYMBOL AND COIN ALLOCATION *******")
 			sys.exit("\n")
 		else:
 			print("********************* THERE IS A NEW COIN IN THE TOP " + str(number_of_coins)+ " **********************")
-			print("*************************** BUY " + buy_coin + " ***************************")
-			print("*************************** SELL " + sell_coin + " **************************")
-			print("******* MODIFY EXCEL SPREADSHEET WITH NEW COIN AND NUMBER OF COINS **********")
+			print("********************************** BUY " + buy_coin + " **********************************")
+			print("********************************** SELL " + sell_coin + " *********************************")
+			print("***** MODIFY EXCEL SPREADSHEET WITH INDEX, SYMBOL AND COIN ALLOCATION *******")
 			sys.exit("\n")
 
 check_coin_list()
