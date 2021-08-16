@@ -202,7 +202,7 @@ def check_coin_list():
 		else:
 			print("********************* THERE IS A NEW COIN IN THE TOP " + str(number_of_coins)+ " **********************")
 			print("*************************** BUY " + buy_coin + " ***************************")
-			print("*************************** SELL " + sell_coin + "***************************")
+			print("*************************** SELL " + sell_coin + " **************************")
 			print("******* MODIFY EXCEL SPREADSHEET WITH NEW COIN AND NUMBER OF COINS **********")
 			sys.exit("\n")
 
